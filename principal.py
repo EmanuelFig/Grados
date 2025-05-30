@@ -1,20 +1,20 @@
 from AgregarGrado import Grado
-from AgregarAlumno import Alumno
 
-grados = []
+grados = {}
 
 def agregar_grado():
-    codigo = int(input("Ingrese código de grado: "))
+    codigo = input("Ingrese código de grado: ")
     if codigo in grados:
         print("El código ya existe.")
         return
     nombre = input("Ingrese nombre del grado: ")
-    grados[codigo - 1] = Grado(codigo, nombre)
+    grados[codigo] = Grado(codigo, nombre)
     print("...Se agregó el grado exitosamente\n")
 
 def inscribir_alumno():
     if not grados:
-        return "No hay grados disponibles. Agregue uno primero.\n"
+        print("No hay grados disponibles. Agregue uno primero.\n")
+        return
 
     apellidos = input("Ingrese Apellidos: ")
     nombre = input("Ingrese Nombre: ")
@@ -39,8 +39,10 @@ def ver_alumnos_por_grado():
         print("No hay grados registrados.\n")
         return
 
-    for i in range(len(grados)):
-        grados[i]
+    for codigo, grado in grados.items():
+        print(f"\nGrado: {grado.nombre} ({codigo})")
+        print(grado.mostrar_alumnos())
+
 def menu():
     while True:
         print("1. Agregar Grado")
@@ -61,5 +63,5 @@ def menu():
         else:
             print("Opción no válida.\n")
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     menu()
