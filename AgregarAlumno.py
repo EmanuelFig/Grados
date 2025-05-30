@@ -1,4 +1,3 @@
-
 class Alumno:
     def __init__(self, nombre,apellidos):
         self.nombre = nombre 
@@ -19,5 +18,4 @@ class Alumno:
         
     def __str__(self):
         return f"{self.Apellidos},{self.nombre}"
-    
     
